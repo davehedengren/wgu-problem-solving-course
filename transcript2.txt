@@ -1,0 +1,980 @@
+You
+Interesting is like, how much of GEs are just learning how EI works? And I liked your thought that it was, um, We need to at least have a level of understanding where you know what it is, that you can't think it's a person inside of a machine. Or 
+
+Emily Lyman
+Yeah, right 
+
+You
+then you can't eat bug and 
+
+Emily Lyman
+Yeah, 
+
+You
+correct. 
+
+Emily Lyman
+because 
+
+You
+Mm-hmm. 
+
+Emily Lyman
+other ones, you're like, how do I use this person? 
+
+You
+Mm-hmm. 
+
+Emily Lyman
+It's like, well, it's not a person. I think that that's valuable. You know how to use it better, yeah. 
+
+You
+Yeah. So let's make that part of our objective. They come out of it knowing what it is and what it isn't. Which 
+
+Emily Lyman
+Yes. 
+
+You
+I think that'll be good. All right. So, circling back to, so the problem solving what I think is going to be the, the place where I can add the most value here. Because I think I 
+
+Emily Lyman
+Yeah. 
+
+You
+think we could design a system, because there's a lot of what I've been doing for the last 2 years. is just building systems that solve a particular 
+
+Emily Lyman
+Yeah. 
+
+You
+problem. And it's honestly what everybody in San 
+
+Emily Lyman
+Yeah. 
+
+You
+Francisco is doing right now. There's vibe coding solutions to problems. And I think knowing 
+
+Emily Lyman
+Yes. 
+
+You
+that you can do that, and though you're not a software engineer is an incredibly powerful skill. So, that's 
+
+Emily Lyman
+Yes. 
+
+You
+what I want you to come out of, is to come out with that same like superhuman power that so many people come out of now. where they think, oh, wait, I can solve that. 
+
+Emily Lyman
+Yes, 
+
+You
+I can do anything. Okay, 
+
+Emily Lyman
+yes, 
+
+You
+so that's that's my objective. And 
+
+Emily Lyman
+yes. 
+
+You
+I think the best way to do this is we're going to have these 150 courses and we're going to build a kind of chat bot system that'll help you articulate the problem. And then we're going to give them access to some kind of encoding space that will let them iterate until they have a solution that they like. And it's probably lovable. You know, or Replet or 
+
+Emily Lyman
+Yeah. 
+
+You
+one of those other companies. Like, um, whichever one you guys can get the best volume discount with. Because they're all pretty similar. of 
+
+Emily Lyman
+Yeah, 
+
+You
+them are nearly as good 
+
+Emily Lyman
+he 
+
+You
+as clod 
+
+Emily Lyman
+did 
+
+You
+code. 
+
+Emily Lyman
+see, OK, yeah. But the advantage is, is that they're more 
+
+You
+Yeah, 
+
+Emily Lyman
+approachable 
+
+You
+and they're just hosted. 
+
+Emily Lyman
+than 
+
+You
+They're just hosted. You know, like the, the, 
+
+Emily Lyman
+they host 
+
+You
+the thing that most 
+
+Emily Lyman
+it. 
+
+You
+scares most people is you can build a cool like website or your local machine and that's at local host 3000. You know, it's an inscrutable local, um, URL. But once you put it on a website, then suddenly it's open to everybody and that's just a miracle. It just feels so empowering. 
+
+Emily Lyman
+Right, 
+
+You
+So like, and maybe, 
+
+Emily Lyman
+yes. 
+
+You
+and I'm lovable and replet. sure they'll all get better. So just, you know, just leave it as a placeholder, whichever 
+
+Emily Lyman
+sure 
+
+You
+one gives WGU the best deal or is just the most popular at the time. You know, so we'll just, we'll 
+
+Emily Lyman
+Yes. 
+
+You
+just choose that as, uh, as needed, just whichever one we think is best and cheapest. Because right now it's like clot code by a mile. Like building any, anytime I like see somebody build something, not in cloud code. It is not as good, it's not as fast, like, because cloud code with Opus 4.5, um, in December just was really 
+
+Emily Lyman
+yeah. 
+
+You
+a big improvement. And everybody's been benefiting from that big improvement for the last 3 months. And, you know, someday it's going to be replaced by something else, but for now it's just a miracle. Can do anything. Um, so, so I want people to get experience building something and something like that. This was a year away, so my guess is lovable and rep wolf caught up by then to at least what it is today. Okay, so let's make that, and let's just put that on the side. And another thing we want to do is we just want to have them know the underpinnings of how AI works, and these won't have to be like full courses, right? Like these can just be learning objectives. Yeah. 
+
+Emily Lyman
+No, no, no. Yeah, we can 
+
+You
+Okay. 
+
+Emily Lyman
+just, like, yeah, 
+
+You
+So 
+
+Emily Lyman
+let's 
+
+You
+let's just 
+
+Emily Lyman
+just, 
+
+You
+make that a 
+
+Emily Lyman
+let's 
+
+You
+learning 
+
+Emily Lyman
+just, 
+
+You
+objective. 
+
+Emily Lyman
+let's build this hole and make a little, well, and, like, I feel like what we do is we teach this, 
+
+You
+Mm-hmm. 
+
+Emily Lyman
+right, in our, in our tools kit course, which is all about learning how to use AI, and then we just have application after application, like when we need to do a communications course, and we need to do a quantitative literacy course. We have application after application with fewer scaffolding 
+
+You
+Yeah. 
+
+Emily Lyman
+around solving a 
+
+You
+Oh 
+
+Emily Lyman
+problem within the room 
+
+You
+yeah, 
+
+Emily Lyman
+of, 
+
+You
+that's a good idea. 
+
+Emily Lyman
+right? 
+
+You
+Oh, that's a neat hill to climb. So this is all, so that can all be one course where you just, you start, you know, week one, 
+
+Emily Lyman
+Yeah. 
+
+You
+you build your 1st solution with a lot of scaffolding and week 12, you build something totally independently. for a problem that 
+
+Emily Lyman
+yeah. 
+
+You
+you articulated. Well, that's interesting. I like that. Yeah. Okay, that's cool. Um, so yeah, I feel really good about that path. And I think that's gonna be the most important one. So let's think about some of these other ones. We'll probably want something about ethics. Like, because I do feel like there's a lot of, Oh, 
+
+Emily Lyman
+WG already has a AI 
+
+You
+they do? 
+
+Emily Lyman
+ethics 
+
+You
+Oh, great. Okay, someone's already got that and hopefully it's not stupid. But let's just assume that problem 
+
+Emily Lyman
+thing. 
+
+You
+is it's stupid. Darn it. You 
+
+Emily Lyman
+Yes, but you 
+
+You
+know, 
+
+Emily Lyman
+know, 
+
+You
+what can 
+
+Emily Lyman
+here 
+
+You
+you 
+
+Emily Lyman
+we 
+
+You
+do? What 
+
+Emily Lyman
+are. 
+
+You
+can you do? That 
+
+Emily Lyman
+I have a harder time replacing something than building my new 
+
+You
+is 
+
+Emily Lyman
+thing, so 
+
+You
+so true. 
+
+Emily Lyman
+let's 
+
+You
+Oh 
+
+Emily Lyman
+just. 
+
+You
+my gosh, yeah. Which is another one of the beauties of the AI. It's a lot easier to build your own version of a software than to try to modify somebody else's. Speaking of which, 
+
+Emily Lyman
+It's 
+
+You
+my my 
+
+Emily Lyman
+you're not 
+
+You
+clod 
+
+Emily Lyman
+wrong. 
+
+You
+last night says it built an alternative version of that robot wrap, but I haven't tried it yet. So. Yeah, so hopefully that's working. He uses the 11 labs audio engine, which is very good. Um, yeah. Uh, okay, let's think here. What other things should people know about AI? I like the idea of walking backwards from like normal, just like knowledge worker skills about like planning and stuff. I'm just trying to think. What do I think? I guess time tracking, you know, like figuring out a schedule and agenda, that's still important even though it's just you, right? Like you still need, 
+
+Emily Lyman
+Yeah, 
+
+You
+yeah. 
+
+Emily Lyman
+yeah, 
+
+You
+Yeah, 
+
+Emily Lyman
+yeah, 
+
+You
+so that's, 
+
+Emily Lyman
+yeah. Well, but I think that that, yeah. I think that that's um, I think that's even more important when it's just you, right? Because you're like, okay, if I need to accomplish this by this day, time, then what resources do I need the day before, the week before, right? Like it's mini problems that you solve. And you lay it out with you and the resources you have and access to me. 
+
+You
+Yeah. Yeah, no, that's right. That's that's that's the big deal. And I feel like everything else is just. Supplemental. Like, I almost want to think, like, well, we've got 8 courses, 7 of them should be this problem solving reflex. 
+
+Emily Lyman
+Yeah. Honestly, I feel like, and especially because, so she's gonna send me over the 
+
+You
+Hmm. 
+
+Emily Lyman
+confidencies that 
+
+You
+Yeah. 
+
+Emily Lyman
+she wants in the communication course, so I'm thinking, the base, the base, AI training, and then the 1st application is communication course, and the nice thing about the competencies, is they're the things that people in business tell us that they want everybody to know 
+
+You
+Oh 
+
+Emily Lyman
+how to 
+
+You
+nice. 
+
+Emily Lyman
+do, 
+
+You
+How prescriptive 
+
+Emily Lyman
+right? And so 
+
+You
+are they? Like, 
+
+Emily Lyman
+we can 
+
+You
+give 
+
+Emily Lyman
+just, 
+
+You
+me an example of one. How small are they? 
+
+Emily Lyman
+I don't really. Oh, yeah, they're like, um, when given a project plan is able to predict the budget and say how it looks. 
+
+You
+Okay, 
+
+Emily Lyman
+They're pretty 
+
+You
+got it. 
+
+Emily Lyman
+prescriptive, but then, yeah, so, we, I'll take a look at those, I 
+
+You
+Yeah, 
+
+Emily Lyman
+don't have them 
+
+You
+that's fine. Yeah, 
+
+Emily Lyman
+yet, 
+
+You
+but they're 
+
+Emily Lyman
+but let's, 
+
+You
+pretty, uh, they're pretty specific. 
+
+Emily Lyman
+let's. 
+
+You
+That great. Because that gives us a nice. 
+
+Emily Lyman
+The next thing is, yeah, those are kind of the problems 
+
+You
+Yeah, 
+
+Emily Lyman
+they're solving, 
+
+You
+no, 
+
+Emily Lyman
+right? 
+
+You
+that's great. That's awesome. If we can just work backwards from that. if you can, if we, if that list, is that list public? Darn 
+
+Emily Lyman
+No. 
+
+You
+it. Okay. 
+
+Emily Lyman
+Mm-mm. 
+
+You
+Because if we can just feed that to clod, I think we can make a really interesting thing of this. 
+
+Emily Lyman
+Yeah, I mean, yeah, I can ask. I can ask. We have a clod inside of our own, um, we have a 
+
+You
+Okay, 
+
+Emily Lyman
+clod inside of 
+
+You
+well, I can 
+
+Emily Lyman
+WGU. 
+
+You
+just 
+
+Emily Lyman
+I 
+
+You
+send 
+
+Emily Lyman
+bet I 
+
+You
+you a 
+
+Emily Lyman
+can use 
+
+You
+prompt. 
+
+Emily Lyman
+that. 
+
+You
+I can just have my cl write a prompt when it's done then and send that to you and you can put it into your cloud. 
+
+Emily Lyman
+Yeah, that'd be great. 
+
+You
+Because I can just iterate with, you know, likely candidates, and then once we have a system that we think is good, We can just, I'll just put it all in GitHub and then you guys can pull it down from GitHub and give it to your clod. And then it can build on the real 
+
+Emily Lyman
+Perfect. 
+
+You
+information. That could be cool. Yeah, that sounds 
+
+Emily Lyman
+Love 
+
+You
+really manageable. 
+
+Emily Lyman
+it. 
+
+You
+Okay, cool. So that'll be neat. Um, you know, some of the skills that, you know, I was talking to my boss today. And, uh, and she was saying, the thing that you, she was, I was asking like, you know, feedback on things I can do better. And one of the things you said is just get really good with claw bots, claw bots. Um, open claw. Yeah. 
+
+Emily Lyman
+Oi, no 
+
+You
+Yeah. 
+
+Emily Lyman
+way, I wanna get good with the open class so 
+
+You
+Yeah, 
+
+Emily Lyman
+much. 
+
+You
+we should do an open claw project. Because, like, I've got one that just went poorly. Like I had it try to download the replication package. Did I tell you about this project? So 
+
+Emily Lyman
+No. 
+
+You
+I, um, let me actually send you the website because it's a neat idea and I'm really excited about it. Um, Uh, but the idea is, you know, the replication crisis in social studies, right? Yeah, 
+
+Emily Lyman
+Yes, 
+
+You
+so right. So replication studies 
+
+Emily Lyman
+yes. 
+
+You
+are actually, um, really slow and hard to do. If you do them with humans. And 
+
+Emily Lyman
+Yeah. 
+
+You
+so what I did is I found that Claude can do them very, very well. And the American Economic Review, which is the number one journal in the economics, has a website where when you publish there, you host your data as a, as in a replication packet. You say, here's all the code I use. Here is all the transformations I performed on the data. If anyone wants to recreate my analysis and do different robustness checks, they can. And for some of them, it doesn't work super well because they've got, um, you know, proprietary data that they don't actually host and they say, well, I'll give it to you if you email me. So I haven't any of that. But what they do have, this is for 100s of 100s of papers. So I went through and I tried to have an open clog go and download each of these papers, a unit of these back ends, and then run it through plot code to see if it can do a replication. And it was really cool. Like, you know, like, so I ran this through, um, with, uh, like, what is it, 50 something? Uh, papers, and it's really neat because you can kind of see. Like which, you know, how often they're mapping. And I've got like my full code here and I've got details on like what works and what doesn't. And it's really cool to 
+
+Emily Lyman
+Wow. 
+
+You
+be able to see this. Let me see if I can find a, uh, I made like a dashboard too. Let me see which page I put that on. I think it's here. Uh, how do I render this? Anyway, but um, but the point is, this is totally a doable thing, and and I feel like open class should be able to do it, because all I'm really doing is clicking on buttons. And so I had set up open cloud to 
+
+Emily Lyman
+Right? 
+
+You
+do it, and I, and I let it run overnight, and it got like 4 of them, and it missed some ones that, you know, because I had it like open the page, look to see if it has all the data, if it doesn't go onto the next one. And it did like 4 of 
+
+Emily Lyman
+Yeah. 
+
+You
+them over the course of like 8 hours and it was so slow and it like kept stalling out and I had to go babysit and then when I did it myself, I got like, you know, 30 of them in in 20 minutes. So 
+
+Emily Lyman
+Right? 
+
+You
+I wasn't happy. But you know, I figured my thought was it'll just get 
+
+Emily Lyman
+Yeah. 
+
+You
+better over time and I can do something else. But like a lot of my coworkers, they've 
+
+Emily Lyman
+Sure. 
+
+You
+got stuff built up where it like monitors Twitter for like interesting things for them. So they've got kind of their own like Twitter reader. Um, they've got it set up 
+
+Emily Lyman
+Sure. 
+
+You
+so that it alerts them in more serious ways when a more serious email comes through, so it's not just every email. It's just when something really important comes down. Like, those all seem like useful things. So it's like an always on 
+
+Emily Lyman
+Sure. 
+
+You
+robot. But what have you thought of? What are ways you would use open claw? 
+
+Emily Lyman
+Oh my gosh, well, here's the thing is, like, I, this is part of the knowing what it is, like, so far, what I would love for it to do is, I would love for it to, um, why, why do I keep 
+
+You
+Oh, 
+
+Emily Lyman
+peeping? 
+
+You
+probably because you're being recorded. 
+
+Emily Lyman
+Um, oh that explains it. Yeah. So I would like for it to watch, no, not watch, but can read 
+
+You
+Yes, 
+
+Emily Lyman
+transcripts? 
+
+You
+it can. 
+
+Emily Lyman
+I don't 
+
+You
+It 
+
+Emily Lyman
+know, 
+
+You
+can read transcripts. 
+
+Emily Lyman
+I would, I would love for it to read transcripts of the top financial planning videos every day, like 
+
+You
+Mm, 
+
+Emily Lyman
+which ones are the most 
+
+You
+that'd be cool. 
+
+Emily Lyman
+popular, 
+
+You
+Ooh, 
+
+Emily Lyman
+and then give me the topics that I should do in my financial 
+
+You
+that sounds great. Yeah, we can, let's try to make something 
+
+Emily Lyman
+planning, 
+
+You
+that does that. That would be fun. 
+
+Emily Lyman
+that, and then I would like for it too, what would I like for so many other things I need to done? It's just, I think the trickiest part for me is always, like, like, I feel as if we are so accustomed to the problems that aren't solvable, that our brain doesn't even go to it as, Oh yeah, that's something that I could use a club open cloth for. Oh, right, that. Um, and so my brain just went to like, oh, yeah, I'm challenging everyone member of my family to 
+
+You
+Make money, 
+
+Emily Lyman
+use 
+
+You
+yeah. 
+
+Emily Lyman
+AI to start a business, right? And, and I'm not sure I'm doing a very 
+
+You
+But 
+
+Emily Lyman
+good job of it. So far, I have 12 views on my 
+
+You
+how are the 
+
+Emily Lyman
+channel. 
+
+You
+kids doing? Are they? 
+
+Emily Lyman
+Yeah, no, Eden 
+
+You
+Ah, 
+
+Emily Lyman
+hasn't even started. 
+
+You
+Eden. Mm, 
+
+Emily Lyman
+She's like, I know. She even went to your lecture, which from what I heard was very inspiring, 
+
+You
+that was okay. 
+
+Emily Lyman
+by the 
+
+You
+I 
+
+Emily Lyman
+way. 
+
+You
+did not do as well as I should have, because I realized halfway through it, that these kids have all done the thing that I'm doing for them. You know, like I'm trying to inspire them by building something fast. Like, yeah, we've all built stuff fast. Because, because I'm used to talking to social science people and these were, uh, all the computer developers. Yep. 
+
+Emily Lyman
+Well, go getters. Yeah. So I think I would need to use open claw in order to learn about open claw 
+
+You
+Well, 
+
+Emily Lyman
+would be my 
+
+You
+no, 
+
+Emily Lyman
+1st 
+
+You
+you'd want to use open, you'd want to use, you don't know, ChatGPT will teach you about open 
+
+Emily Lyman
+thing. 
+
+You
+clock. all open clot is, is it's just an always on clot, a clot code. So it 
+
+Emily Lyman
+Right. 
+
+You
+doesn't know much and setting it up is kind of annoying, but you can have, you know, ChatGPT set you up on it. I think it's annoying. And then you need to have a computer that's always on. Because that's its real superpower over cloud code, is you can set up little, it's called a heartbeat. It's essentially just a timer job where every X minutes I do something or I watch a certain web page and when something happens, I do something. Yeah. 
+
+Emily Lyman
+OK OK. That's cool. 
+
+You
+Yeah. 
+
+Emily Lyman
+Yeah, I 
+
+You
+But 
+
+Emily Lyman
+need to learn more, 
+
+You
+yeah. But 
+
+Emily Lyman
+don't know 
+
+You
+we're 
+
+Emily Lyman
+enough. 
+
+You
+fun. But, you know, learning is doing and doing is fun. Mm 
+
+Emily Lyman
+It's true, you are correct on all these points. I feel like I need to have the goal of doing something with AI for half an hour every day, that isn't an, uh, a question, a Google search. 
+
+You
+Yeah, but the Google 
+
+Emily Lyman
+I feel 
+
+You
+search 
+
+Emily Lyman
+like 
+
+You
+still 
+
+Emily Lyman
+I'm 
+
+You
+matters because Google 
+
+Emily Lyman
+most. 
+
+You
+was a big deal for reducing the amount of ignorance that's in my head. And so it's, you know, it's still a good thing. 
+
+Emily Lyman
+Right, 
+
+You
+Yeah. 
+
+Emily Lyman
+that 
+
+You
+Yeah, 
+
+Emily Lyman
+would. Yeah, but I love this. 
+
+You
+I think this 
+
+Emily Lyman
+I 
+
+You
+is gonna 
+
+Emily Lyman
+love 
+
+You
+be good. 
+
+Emily Lyman
+these 
+
+You
+So 
+
+Emily Lyman
+ideas. 
+
+You
+yeah, so I will, 
+
+Emily Lyman
+This can be 
+
+You
+I'm going 
+
+Emily Lyman
+good. 
+
+You
+down a plane in a little bit, and I'm going to try to get Claude working before I go. Um, and then I'll try to get it uh, running. 
+
+Emily Lyman
+Oh my gosh, you're amazing, thanks for being like a little bit, my 
+
+You
+Oh, 
+
+Emily Lyman
+superpower, 
+
+You
+what? 
+
+Emily Lyman
+Dave, like I feel like you're gonna be really good at my for my boss, 
+
+You
+Well, this is something I'm 
+
+Emily Lyman
+like 
+
+You
+very 
+
+Emily Lyman
+thank 
+
+You
+excited about. 
+
+Emily Lyman
+you. I'm very excited about it too. Thank you, thank you, thank you. Have 
+
+You
+Will 
+
+Emily Lyman
+fun on your flight. 
+
+You
+do. 
+
+Emily Lyman
+Where you 
+
+You
+Oh, 
+
+Emily Lyman
+going? 
+
+You
+North Carolina, visiting Alana Anders. It 
+
+Emily Lyman
+Oh, that's fun, 
+
+You
+is. All right, okay. Talk to you guys later. 
+
+Emily Lyman
+cuties. 
+
+You
+Bye Emily. 

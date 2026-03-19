@@ -1,0 +1,1 @@
+look at the transcripts to get an idea of the project we want to build. get it up on github with a plan so I can iterate via my phone without needing local claude code. can you get that started?
