@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem-Solving with AI — WGU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand" onclick="showDashboard()">
+            <span class="nav-logo">⚡</span>
+            Problem-Solving with AI
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showDashboard()" class="nav-link active" id="nav-dashboard">Dashboard</a>
+            <a href="#" onclick="showProgress()" class="nav-link" id="nav-progress">My Progress</a>
+        </div>
+    </nav>
+
+    <!-- Dashboard View -->
+    <main id="dashboard-view" class="container">
+        <header class="hero">
+            <h1>You can solve that.</h1>
+            <p class="hero-sub">Learn to identify real problems and build AI-powered solutions. By the end of this course, you'll have the power to build solutions to problems in your personal and professional life.</p>
+        </header>
+
+        <section class="modules-grid" id="modules-grid">
+            <!-- Populated by JS -->
+        </section>
+    </main>
+
+    <!-- Module View -->
+    <main id="module-view" class="container hidden">
+        <button class="back-btn" onclick="showDashboard()">← Back to Dashboard</button>
+        <div id="module-content">
+            <!-- Populated dynamically -->
+        </div>
+    </main>
+
+    <!-- Problem Articulation Wizard -->
+    <main id="problem-wizard" class="container hidden">
+        <button class="back-btn" onclick="returnToModule()">← Back to Module</button>
+        <div class="wizard-container">
+            <div class="wizard-header">
+                <h2>Problem Discovery Workshop</h2>
+                <div class="scaffolding-indicator" id="scaffolding-indicator">
+                    <span class="scaffolding-label">Guidance Level:</span>
+                    <div class="scaffolding-bar">
+                        <div class="scaffolding-fill" id="scaffolding-fill"></div>
+                    </div>
+                    <span class="scaffolding-text" id="scaffolding-text"></span>
+                </div>
+            </div>
+            <div class="wizard-chat" id="wizard-chat">
+                <!-- Chat messages populated by JS -->
+            </div>
+            <div class="wizard-input-area">
+                <div class="wizard-suggestions" id="wizard-suggestions">
+                    <!-- Quick suggestions populated by JS -->
+                </div>
+                <div class="wizard-input-row">
+                    <textarea id="wizard-input" placeholder="Type your response..." rows="2"></textarea>
+                    <button id="wizard-send" onclick="sendWizardMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lesson View -->
+    <main id="lesson-view" class="container hidden">
+        <button class="back-btn" onclick="returnToModule()">← Back to Module</button>
+        <div id="lesson-content">
+            <!-- Populated dynamically -->
+        </div>
+    </main>
+
+    <!-- Progress View -->
+    <main id="progress-view" class="container hidden">
+        <h2>My Learning Journey</h2>
+        <div class="progress-overview" id="progress-overview">
+            <!-- Populated by JS -->
+        </div>
+    </main>
+
+    <script src="course-data.js"></script>
+    <script src="problem-wizard.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
