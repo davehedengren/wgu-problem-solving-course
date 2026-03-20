@@ -25,7 +25,7 @@ app.post('/api/wizard', async (req, res) => {
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-opus-4-6-20250925',
+      model: 'claude-opus-4-6',
       max_tokens: 1024,
       system: systemPrompt,
       messages: messages,
