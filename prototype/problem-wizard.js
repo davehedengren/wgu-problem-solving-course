@@ -49,9 +49,39 @@ const ProblemWizard = (() => {
     // If we don't know the student yet, show profile picker first
     if (!studentProfile.college) {
       showProfilePicker();
+      return;
+    }
+
+    // Check for saved conversation history for this module
+    const savedHistory = ProjectHub.getWizardHistory(moduleId);
+    if (savedHistory && savedHistory.length > 0) {
+      resumeConversation(savedHistory);
     } else {
       startConversation();
     }
+  }
+
+  function resumeConversation(savedMessages) {
+    messages = savedMessages;
+
+    // Replay the conversation into the chat UI
+    for (const msg of messages) {
+      if (msg.role === 'user') {
+        addUserMessage(msg.content);
+      } else if (msg.role === 'assistant') {
+        addSystemMessage(msg.content);
+      }
+    }
+
+    // Show a "resumed" notice and update suggestions
+    const chatEl = document.getElementById('wizard-chat');
+    const notice = document.createElement('div');
+    notice.className = 'chat-notice';
+    notice.textContent = 'Conversation resumed from your last session.';
+    chatEl.appendChild(notice);
+    chatEl.scrollTop = chatEl.scrollHeight;
+
+    updateSuggestions();
   }
 
   // ==================== PROFILE ====================
@@ -131,15 +161,28 @@ const ProblemWizard = (() => {
   // ==================== CONVERSATION ====================
 
   function startConversation() {
-    // Send the student's profile as the first user message so Claude has context
-    const introMessage = studentProfile.major
-      ? `Hi! I'm a WGU student in the ${studentProfile.college}, studying ${studentProfile.major}. I'm ready to work on finding a problem to solve.`
-      : `Hi! I'm a WGU student. I'm ready to work on finding a problem to solve.`;
+    // Build intro with context from prior modules and project state
+    const project = ProjectHub.get();
+    let introMessage = studentProfile.major
+      ? `Hi! I'm a WGU student in the ${studentProfile.college}, studying ${studentProfile.major}.`
+      : `Hi! I'm a WGU student.`;
+
+    // If returning in a later module, provide context about their project
+    if (currentModule > 1 && project.problemStatement) {
+      introMessage += `\n\nI've been working on a problem: "${project.problemStatement}"`;
+      if (project.deployUrl) {
+        introMessage += `\nI've deployed a solution at ${project.deployUrl}.`;
+      }
+      if (project.iterations.length > 0) {
+        const recent = project.iterations.slice(-3).map(it => it.note).join('; ');
+        introMessage += `\nRecent iteration notes: ${recent}`;
+      }
+      introMessage += `\n\nI'm in Module ${currentModule} now and want to keep refining.`;
+    } else {
+      introMessage += ` I'm ready to work on finding a problem to solve.`;
+    }
 
     messages = [{ role: 'user', content: introMessage }];
-
-    // If we already showed the profile, don't duplicate the user message
-    // Just send to get Claude's opening response
     sendToAPI();
   }
 
@@ -170,6 +213,9 @@ const ProblemWizard = (() => {
 
       // Add assistant response to conversation history
       messages.push({ role: 'assistant', content: data.response });
+
+      // Save to ProjectHub for cross-module persistence
+      ProjectHub.saveWizardHistory(currentModule, messages);
 
       // Display it
       addSystemMessage(data.response);

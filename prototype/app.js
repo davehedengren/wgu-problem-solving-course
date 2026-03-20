@@ -44,6 +44,12 @@ function showDashboard() {
   renderModulesGrid();
 }
 
+function showProjectHub() {
+  showView('project-hub-view');
+  document.getElementById('nav-project').classList.add('active');
+  ProjectHub.render();
+}
+
 function showProgress() {
   showView('progress-view');
   document.getElementById('nav-progress').classList.add('active');
@@ -224,6 +230,21 @@ function openActivity(moduleId, activityIndex) {
     showView('problem-wizard');
     document.getElementById('wizard-chat').innerHTML = '';
     ProblemWizard.init(moduleId);
+    return;
+  }
+
+  // Token Explorer
+  if (activity.contentKey === 'token-explorer') {
+    showView('lesson-view');
+    TokenExplorer.init();
+    return;
+  }
+
+  // Platform guide
+  if (activity.contentKey === 'choosing-platform') {
+    const project = ProjectHub.get();
+    showView('lesson-view');
+    openPlatformGuide(project.platform || 'lovable');
     return;
   }
 

@@ -14,6 +14,7 @@
         </div>
         <div class="nav-links">
             <a href="#" onclick="showDashboard()" class="nav-link active" id="nav-dashboard">Dashboard</a>
+            <a href="#" onclick="showProjectHub()" class="nav-link" id="nav-project">My Project</a>
             <a href="#" onclick="showProgress()" class="nav-link" id="nav-progress">My Progress</a>
         </div>
     </nav>
@@ -75,6 +76,15 @@
         </div>
     </main>
 
+    <!-- My Project Hub View -->
+    <main id="project-hub-view" class="container hidden">
+        <h2>My Project</h2>
+        <p style="color: #8b8fa3; margin-bottom: 1.5rem;">Your project's home base — problem, platform, deploy URL, and iteration log.</p>
+        <div id="project-hub-content">
+            <!-- Populated by project-hub.js -->
+        </div>
+    </main>
+
     <!-- Progress View -->
     <main id="progress-view" class="container hidden">
         <h2>My Learning Journey</h2>
@@ -84,6 +94,9 @@
     </main>
 
     <script src="course-data.js"></script>
+    <script src="project-hub.js"></script>
+    <script src="platform-guide.js"></script>
+    <script src="token-explorer.js"></script>
     <script src="problem-wizard.js"></script>
     <script src="app.js"></script>
 </body>
