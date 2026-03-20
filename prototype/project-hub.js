@@ -17,7 +17,7 @@ const ProjectHub = (() => {
   function defaultProject() {
     return {
       problemStatement: '',
-      ifsScores: { impact: 0, frequency: 0, solvability: 0 },
+      evalScores: { people: 1, frequency: 0, severity: 0, solvability: 0 },
       targetUser: '',
       mvpFeatures: [],
       platform: '',       // 'lovable' | 'replit' | 'other'
@@ -124,31 +124,29 @@ const ProjectHub = (() => {
           </div>
         </div>
 
-        <!-- IFS Score Card -->
+        <!-- Problem Evaluation Card -->
         <div class="hub-card hub-card-compact">
-          <div class="hub-card-header"><h3>IFS Score</h3></div>
+          <div class="hub-card-header"><h3>Problem Evaluation</h3></div>
           <div class="hub-card-body">
             <div class="ifs-sliders">
               <div class="ifs-row">
-                <label>Impact</label>
-                <input type="range" min="0" max="5" value="${project.ifsScores.impact}" oninput="ProjectHub.updateIFS('impact', this.value)">
-                <span class="ifs-value" id="ifs-impact-val">${project.ifsScores.impact}</span>
+                <label>People</label>
+                <input type="number" min="1" value="${project.evalScores.people}" style="width:70px; background:#0d1117; border:1px solid #2a2d3a; color:#e1e4e8; border-radius:4px; padding:2px 6px;" oninput="ProjectHub.updateEval('people', this.value)">
               </div>
               <div class="ifs-row">
                 <label>Frequency</label>
-                <input type="range" min="0" max="5" value="${project.ifsScores.frequency}" oninput="ProjectHub.updateIFS('frequency', this.value)">
-                <span class="ifs-value" id="ifs-frequency-val">${project.ifsScores.frequency}</span>
+                <input type="range" min="0" max="5" value="${project.evalScores.frequency}" oninput="ProjectHub.updateEval('frequency', this.value)">
+                <span class="ifs-value" id="eval-frequency-val">${project.evalScores.frequency}</span>
+              </div>
+              <div class="ifs-row">
+                <label>Severity</label>
+                <input type="range" min="0" max="5" value="${project.evalScores.severity}" oninput="ProjectHub.updateEval('severity', this.value)">
+                <span class="ifs-value" id="eval-severity-val">${project.evalScores.severity}</span>
               </div>
               <div class="ifs-row">
                 <label>Solvability</label>
-                <input type="range" min="0" max="5" value="${project.ifsScores.solvability}" oninput="ProjectHub.updateIFS('solvability', this.value)">
-                <span class="ifs-value" id="ifs-solvability-val">${project.ifsScores.solvability}</span>
-              </div>
-              <div class="ifs-total">
-                Total: <strong>${project.ifsScores.impact * project.ifsScores.frequency * project.ifsScores.solvability}</strong> / 125
-                ${project.ifsScores.impact * project.ifsScores.frequency * project.ifsScores.solvability >= 50
-                  ? '<span class="ifs-verdict good">Strong candidate</span>'
-                  : '<span class="ifs-verdict weak">Keep refining</span>'}
+                <input type="range" min="0" max="5" value="${project.evalScores.solvability}" oninput="ProjectHub.updateEval('solvability', this.value)">
+                <span class="ifs-value" id="eval-solvability-val">${project.evalScores.solvability}</span>
               </div>
             </div>
           </div>
@@ -284,18 +282,13 @@ const ProjectHub = (() => {
     render();
   }
 
-  function updateIFS(dimension, value) {
+  function updateEval(dimension, value) {
     const project = load();
-    project.ifsScores[dimension] = parseInt(value);
+    if (!project.evalScores) project.evalScores = { people: 1, frequency: 0, severity: 0, solvability: 0 };
+    project.evalScores[dimension] = parseInt(value);
     save(project);
-    // Update just the display values without full re-render
-    const valEl = document.getElementById(`ifs-${dimension}-val`);
+    const valEl = document.getElementById(`eval-${dimension}-val`);
     if (valEl) valEl.textContent = value;
-    const totalEl = document.querySelector('.ifs-total');
-    if (totalEl) {
-      const total = project.ifsScores.impact * project.ifsScores.frequency * project.ifsScores.solvability;
-      totalEl.innerHTML = `Total: <strong>${total}</strong> / 125 ${total >= 50 ? '<span class="ifs-verdict good">Strong candidate</span>' : '<span class="ifs-verdict weak">Keep refining</span>'}`;
-    }
   }
 
   function setPlatform(platform) {
@@ -331,7 +324,7 @@ const ProjectHub = (() => {
 
   return {
     get, update, save: () => save(load()), render,
-    saveProblemStatement, saveTargetUser, updateIFS,
+    saveProblemStatement, saveTargetUser, updateEval,
     setPlatform, saveUrls, addIterationEntry,
     saveWizardHistory, getWizardHistory, getAllWizardHistory,
     setDeployUrl, addIteration

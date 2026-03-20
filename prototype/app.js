@@ -358,8 +358,8 @@ function renderRateProblem(section) {
       </div>
       <div class="rate-score-row">
         <div class="rate-score-label">Problem Score:</div>
-        <div class="rate-score-value" id="rate-score">9</div>
-        <div class="rate-score-hint" id="rate-score-hint">Might be too small — look for a bigger problem</div>
+        <div class="rate-score-value" id="rate-score">27</div>
+        <div class="rate-score-hint" id="rate-score-hint">Might be too small — look for a bigger or more frequent problem</div>
       </div>
       <button class="rate-get-feedback-btn" onclick="getProblemFeedback()">Get AI Feedback on My Evaluation</button>
       <div class="rate-feedback" id="rate-feedback"></div>
@@ -369,18 +369,30 @@ function renderRateProblem(section) {
 
 function updateProblemScore() {
   const people = Math.max(1, parseInt(document.getElementById('rate-people')?.value || 1));
+  const frequency = parseInt(document.getElementById('rate-frequency')?.value || 3);
   const severity = parseInt(document.getElementById('rate-severity')?.value || 3);
   const solvability = parseInt(document.getElementById('rate-solvability')?.value || 3);
-  const score = people * severity * solvability;
+
+  // Normalize people to a 1-5 scale for scoring: 1=1, 2-5=2, 6-20=3, 21-100=4, 100+=5
+  let peopleScore;
+  if (people <= 1) peopleScore = 1;
+  else if (people <= 5) peopleScore = 2;
+  else if (people <= 20) peopleScore = 3;
+  else if (people <= 100) peopleScore = 4;
+  else peopleScore = 5;
+
+  const score = peopleScore * frequency * severity * solvability;
+  const maxScore = 5 * 5 * 5 * 5; // 625
 
   const scoreEl = document.getElementById('rate-score');
   const hintEl = document.getElementById('rate-score-hint');
-  if (scoreEl) scoreEl.textContent = score.toLocaleString();
+  if (scoreEl) scoreEl.textContent = score;
 
   if (hintEl) {
-    if (score >= 100) hintEl.textContent = 'Strong candidate for a project!';
-    else if (score >= 30) hintEl.textContent = 'Decent candidate — keep refining';
-    else hintEl.textContent = 'Might be too small — look for a bigger problem';
+    if (score >= 200) hintEl.textContent = 'Strong candidate for a project!';
+    else if (score >= 75) hintEl.textContent = 'Decent candidate — keep refining';
+    else if (score < 75 && solvability <= 2) hintEl.textContent = 'Might be hard to build — can you narrow the scope?';
+    else hintEl.textContent = 'Might be too small — look for a bigger or more frequent problem';
   }
 }
 
@@ -392,23 +404,33 @@ async function getProblemFeedback() {
   }
 
   const people = document.getElementById('rate-people')?.value || 1;
+  const frequency = document.getElementById('rate-frequency')?.value || 3;
   const severity = document.getElementById('rate-severity')?.value || 3;
   const solvability = document.getElementById('rate-solvability')?.value || 3;
+  const freqLabels = { 1: "Yearly", 2: "Monthly", 3: "Weekly", 4: "Daily", 5: "Multiple times/day" };
+  const sevLabels = { 1: "Minor annoyance", 2: "Frustrating", 3: "Wastes real time", 4: "Causes real harm", 5: "Critical blocker" };
+  const solLabels = { 1: "Very unlikely", 2: "Challenging", 3: "Doable with help", 4: "Quite doable", 5: "Straightforward" };
 
   const feedbackEl = document.getElementById('rate-feedback');
   feedbackEl.innerHTML = '<div class="rate-feedback-loading">Getting AI feedback...</div>';
 
-  const prompt = `A student described this problem and self-evaluated it. Give them brief, constructive feedback (3-4 paragraphs max).
+  const prompt = `A student in a problem-solving course described a problem and self-evaluated it. Give them brief, constructive feedback (3-4 paragraphs max).
+
+The student is learning to identify actionable problems — ones that are specific, measurable, and point toward a buildable solution. A strong problem statement follows this formula: [WHO] experiences [WHAT PROBLEM] [HOW OFTEN], which causes [WHAT IMPACT]. Currently they [CURRENT WORKAROUND], which [WHY THAT'S INADEQUATE].
 
 Problem description: "${desc}"
 
 Student's self-ratings:
 - People Impacted: ${people} people
-- Severity: ${severity}/5
-- Solvability: ${solvability}/5
-- Combined Score: ${people * severity * solvability}
+- Frequency: ${frequency}/5 (${freqLabels[frequency]})
+- Severity: ${severity}/5 (${sevLabels[severity]})
+- Solvability: ${solvability}/5 (${solLabels[solvability]})
 
-For each dimension, tell them whether you agree with their rating or if you think they're over- or under-estimating, and why. Then give one concrete suggestion for how they could sharpen the problem statement. Be encouraging but honest.`;
+First, evaluate whether the problem description is specific enough — does it name WHO, WHAT, HOW OFTEN, and WHAT IMPACT? If any piece is vague, point that out.
+
+Then for each dimension, tell them whether you agree with their rating or if they're over- or under-estimating, and why. Be specific — don't just say "I agree," explain your reasoning.
+
+Finally, give one concrete suggestion for how they could sharpen the problem statement to make it more actionable. Be encouraging but intellectually honest.`;
 
   try {
     const res = await fetch('/api/wizard', {
