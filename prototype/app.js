@@ -261,8 +261,19 @@ function openActivity(moduleId, activityIndex) {
   renderGenericActivity(activity, module);
 }
 
+function getFieldExamples() {
+  try {
+    const profile = JSON.parse(localStorage.getItem('wgu-wizard-profile') || '{}');
+    if (profile.college && FIELD_EXAMPLES[profile.college]) {
+      return FIELD_EXAMPLES[profile.college];
+    }
+  } catch {}
+  return DEFAULT_FIELD_EXAMPLES;
+}
+
 function renderLesson(lesson) {
   const container = document.getElementById('lesson-content');
+  const fieldEx = getFieldExamples();
   let html = `<div class="lesson-header"><h1>${lesson.title}</h1></div><div class="lesson-body">`;
 
   lesson.sections.forEach(section => {
@@ -270,9 +281,11 @@ function renderLesson(lesson) {
       case 'text':
         html += section.html;
         break;
-      case 'concept':
-        html += `<div class="concept-card"><h3>${section.title}</h3>${section.html}</div>`;
+      case 'concept': {
+        const content = section.dynamic && section.buildHtml ? section.buildHtml(fieldEx) : section.html;
+        html += `<div class="concept-card"><h3>${section.title}</h3>${content}</div>`;
         break;
+      }
       case 'analogy':
         html += `<div class="analogy-box"><div class="analogy-label">${section.label || 'Analogy'}</div>${section.html}</div>`;
         break;
@@ -287,7 +300,7 @@ function renderLesson(lesson) {
         `;
         break;
       case 'rate-problem':
-        html += renderRateProblem(section);
+        html += renderRateProblem(section, fieldEx);
         break;
       case 'quiz':
         html += renderQuiz(section.questions);
@@ -314,7 +327,7 @@ function renderQuiz(questions) {
   return html;
 }
 
-function renderRateProblem(section) {
+function renderRateProblem(section, fieldEx) {
   const dimHtml = section.dimensions.map(d => {
     if (d.inputType === 'number') {
       return `
@@ -351,7 +364,7 @@ function renderRateProblem(section) {
   return `
     <div class="rate-problem-box">
       <h3>${section.title}</h3>
-      <p>${section.prompt}</p>
+      <p>${section.dynamicPrompt && section.buildPrompt ? section.buildPrompt(fieldEx) : section.prompt}</p>
       <textarea id="rate-problem-desc" placeholder="Describe the problem here — be specific about who it affects and what happens..."></textarea>
       <div class="rate-dimensions">
         ${dimHtml}
@@ -438,7 +451,7 @@ Finally, give one concrete suggestion for how they could sharpen the problem sta
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }],
-        studentProfile: {},
+        studentProfile: JSON.parse(localStorage.getItem('wgu-wizard-profile') || '{}'),
         scaffoldingLevel: 5,
         moduleId: 1
       })
