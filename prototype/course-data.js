@@ -39,7 +39,7 @@ const MODULES = [
     objectives: [
       "Distinguish between complaints and actionable problems",
       "Identify 3+ real problems in your personal or professional life",
-      "Evaluate problem significance using the Impact / Frequency / Solvability framework"
+      "Evaluate problem significance using the People / Frequency / Severity / Solvability framework"
     ],
     activities: [
       {
@@ -449,26 +449,48 @@ const LESSON_CONTENT = {
         the room will be comfortable." One vents. The other <em>leads somewhere</em>.</p>`
       },
       {
+        type: "concept",
+        title: "The Problem Statement Formula",
+        html: `
+          <p>A strong problem statement follows this pattern:</p>
+          <blockquote><strong>[WHO]</strong> experiences <strong>[WHAT PROBLEM]</strong> <strong>[HOW OFTEN]</strong>,
+          which causes <strong>[WHAT IMPACT]</strong>. Currently they <strong>[CURRENT WORKAROUND]</strong>,
+          which <strong>[WHY THAT'S INADEQUATE]</strong>.</blockquote>
+          <p><em>Example:</em> <strong>Freelance designers</strong> spend <strong>3+ hours per week</strong> manually
+          creating invoices and chasing payments, which causes <strong>lost billable time and cash flow stress</strong>.
+          Currently they <strong>use spreadsheet templates</strong>, which <strong>don't track who's paid or send reminders</strong>.</p>
+          <p>Notice how every piece is specific and measurable. That's what makes it actionable.</p>
+        `
+      },
+      {
         type: "text",
         html: `
-          <h2>The Impact / Frequency / Solvability Framework</h2>
-          <p>Not all problems are worth solving. Use this framework to evaluate:</p>
+          <h2>Is This Problem Worth Solving?</h2>
+          <p>You have 8 weeks to build a solution. Not every problem is worth that investment.
+          Before you commit, evaluate your problem on four dimensions:</p>
           <ul>
-            <li><strong>Impact:</strong> How much does this problem hurt when it happens? (1-5)</li>
-            <li><strong>Frequency:</strong> How often does it happen? (1-5)</li>
-            <li><strong>Solvability:</strong> How feasible is it to build a solution? (1-5)</li>
+            <li><strong>People Impacted:</strong> How many people experience this problem? A problem that affects
+            just you might still be worth solving — but one that affects hundreds is more compelling.</li>
+            <li><strong>Frequency:</strong> How often does this problem occur? Daily problems compound; yearly ones might not justify a solution.</li>
+            <li><strong>Severity:</strong> How painful is each occurrence? A minor annoyance is different from a workflow-blocking frustration.</li>
+            <li><strong>Solvability:</strong> Could you realistically build something to help? Some problems are hard because
+            they need hardware, legal changes, or human behavior shifts. The best project candidates are ones where
+            software can genuinely make a difference.</li>
           </ul>
-          <p>Multiply the scores. Problems scoring 50+ are strong candidates for your course project.</p>
+          <p>There's no magic formula — a problem affecting 5 people severely every day can be better than one
+          affecting 1,000 people mildly once a year. The point is to <em>think critically</em> about whether
+          your problem is worth your time.</p>
         `
       },
       {
         type: "rate-problem",
         title: "Try it: Rate a Problem",
-        prompt: "Think of a frustration you experienced this week. Describe it as a problem (not a complaint), then evaluate it on the dimensions below.",
+        prompt: "Think of a frustration you experienced this week. First, describe it using the problem statement formula above (who, what, how often, what impact, current workaround, why it's inadequate). Then evaluate it on the dimensions below.",
         dimensions: [
           { id: "people", label: "People Impacted", desc: "How many people experience this problem?", inputType: "number" },
-          { id: "severity", label: "Severity", desc: "How painful is this when it happens?", anchors: ["Minor annoyance", "Frustrating", "Wastes real time", "Causes real harm", "Critical blocker"] },
-          { id: "solvability", label: "Solvability", desc: "How plausible is it that you could build a solution?", anchors: ["Very hard", "Challenging", "Doable with help", "Quite doable", "Straightforward"] }
+          { id: "frequency", label: "Frequency", desc: "How often does this problem occur?", anchors: ["Yearly", "Monthly", "Weekly", "Daily", "Multiple times/day"] },
+          { id: "severity", label: "Severity", desc: "How painful is each occurrence?", anchors: ["Minor annoyance", "Frustrating", "Wastes real time", "Causes real harm", "Critical blocker"] },
+          { id: "solvability", label: "Solvability", desc: "Could you build something to help in 8 weeks?", anchors: ["Very unlikely", "Challenging", "Doable with help", "Quite doable", "Straightforward"] }
         ]
       },
       {
@@ -484,22 +506,36 @@ const LESSON_CONTENT = {
             ],
             correct: 1,
             feedback: {
-              correct: "That's a strong problem statement — it's specific, measurable, and points toward a solution.",
-              incorrect: "Look for the option that is specific, quantified, and suggests what a solution could achieve."
+              correct: "That's a strong problem statement — it's specific (who: new employees), measurable (3 weeks → 2 days), and points toward a solution (automation).",
+              incorrect: "Look for the option that names WHO is affected, HOW MUCH it costs them, and WHAT a solution could achieve. Complaints lack these specifics."
             }
           },
           {
-            q: "A problem scores Impact: 5, Frequency: 1, Solvability: 5. Total: 25. Is this a good project candidate?",
+            q: "A problem affects 500 people, but it only happens once a year and is mild. Is this a good course project?",
             options: [
-              "Yes — the high impact makes it worth solving",
-              "No — it rarely happens, so the total value of solving it is low",
-              "Maybe — it depends on how many people are affected",
-              "No — solvable problems are too easy"
+              "Yes — 500 people is a lot",
+              "Probably not — low frequency and low severity mean the total pain is small, even across many people",
+              "Yes — you should always pick the problem with the most people",
+              "No — 500 people is too many to build for"
             ],
-            correct: 2,
+            correct: 1,
             feedback: {
-              correct: "Exactly — frequency matters, but if it affects thousands of people even rarely, the aggregate impact could be huge. Context matters.",
-              incorrect: "The best answer considers that while the score is low, the number of people affected could change the calculus entirely."
+              correct: "Right. Scale matters, but frequency and severity multiply the impact. 500 people × once a year × mild pain = not much total suffering. Compare that to 10 people × daily × severe pain = much more total impact and a stronger project candidate.",
+              incorrect: "Think about the TOTAL pain across all dimensions. People alone doesn't tell you enough — you need to consider how often it happens and how much it hurts each time."
+            }
+          },
+          {
+            q: "A classmate says: 'I want to build an app that cures loneliness.' What's the best feedback?",
+            options: [
+              "Great idea! Loneliness is a huge problem.",
+              "That's too vague — WHO is lonely, WHEN, and what specific part of loneliness could software actually address?",
+              "You can't solve loneliness with technology.",
+              "You should pick an easier problem."
+            ],
+            correct: 1,
+            feedback: {
+              correct: "Exactly. The instinct is good — loneliness IS a real problem. But it's not actionable until you get specific. 'New remote workers who eat lunch alone every day' is something you could build for. 'Loneliness' is not.",
+              incorrect: "The idea isn't bad — it's just not specific enough yet. A good problem-solver doesn't dismiss big problems; they narrow them until they're actionable."
             }
           }
         ]
