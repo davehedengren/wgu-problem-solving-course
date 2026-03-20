@@ -416,6 +416,97 @@ const MODULES = [
   }
 ];
 
+// Field-specific examples for personalizing lesson content
+const FIELD_EXAMPLES = {
+  "School of Business": {
+    complaint: "This expense reporting system is terrible.",
+    problem: "Sales reps spend 45 minutes after every client trip manually entering receipts into an expense system that rejects 30% of submissions for formatting errors — costing the team 200+ hours per quarter in rework.",
+    formula: {
+      who: "Account managers at mid-size firms",
+      what: "spend 3+ hours per week manually building client reports",
+      howOften: "weekly, before every client check-in",
+      impact: "delayed insights and missed upsell opportunities",
+      workaround: "copy-paste from multiple dashboards into a slide deck",
+      whyInadequate: "it's error-prone and the data is stale by the time they present"
+    },
+    tryitPrompts: [
+      "Think about the last time you dealt with a frustrating business process at work or school.",
+      "What tools or systems in your field feel like they were designed by someone who never used them?",
+      "What information do people in your field waste time looking for?"
+    ]
+  },
+  "Leavitt School of Health": {
+    complaint: "Patient handoffs are a mess.",
+    problem: "Nurses spend 20 minutes per shift navigating a scheduling system that could be simplified — that's 120+ hours per year per nurse wasted on scheduling instead of patient care.",
+    formula: {
+      who: "Home health aides",
+      what: "arrive at patient homes without updated care plans",
+      howOften: "3-4 times per week",
+      impact: "missed medication changes and safety risks",
+      workaround: "call the office and wait on hold for updates",
+      whyInadequate: "the office is often busy, and critical info gets lost in verbal relay"
+    },
+    tryitPrompts: [
+      "Think about the last time you saw a healthcare process that felt inefficient or risky.",
+      "What information gaps have you noticed between providers, patients, or care teams?",
+      "What task do healthcare workers do repeatedly that a system should handle?"
+    ]
+  },
+  "School of Technology": {
+    complaint: "Our codebase documentation is useless.",
+    problem: "Junior developers waste 2 hours per day searching documentation scattered across 4 different wikis, Slack threads, and outdated README files — a problem that compounds as the team grows.",
+    formula: {
+      who: "IT help desk staff",
+      what: "answer the same 50 questions repeatedly via ticket",
+      howOften: "dozens of times daily",
+      impact: "30% of help desk time spent on questions that could be self-service",
+      workaround: "maintain a FAQ doc that nobody reads",
+      whyInadequate: "the doc is always out of date and doesn't handle variations of the same question"
+    },
+    tryitPrompts: [
+      "Think about a developer tool, workflow, or system that frustrated you recently.",
+      "What repetitive task in tech could be automated but hasn't been?",
+      "Where do people in your field waste time on things that software should handle?"
+    ]
+  },
+  "School of Education": {
+    complaint: "Grading takes forever.",
+    problem: "Teachers spend 6 hours per week creating differentiated worksheets for students at 4 different reading levels — time that could be spent on direct instruction or student support.",
+    formula: {
+      who: "Substitute teachers",
+      what: "arrive at classrooms with zero context about student needs, routines, or the lesson plan",
+      howOften: "every substitute assignment (15+ times/semester district-wide)",
+      impact: "lost instructional time and student behavior issues",
+      workaround: "leave a paper binder on the desk with basic info",
+      whyInadequate: "it's rarely updated and doesn't cover student-specific accommodations"
+    },
+    tryitPrompts: [
+      "Think about the last time an education process felt unnecessarily manual or slow.",
+      "What information do teachers, parents, or students struggle to find or share?",
+      "What administrative task eats into actual teaching or learning time?"
+    ]
+  }
+};
+
+// Default examples for students who haven't set a profile yet
+const DEFAULT_FIELD_EXAMPLES = {
+  complaint: "This scheduling system is terrible.",
+  problem: "Nurses spend 20 minutes per shift navigating a scheduling system that could be simplified — that's 120+ hours per year per nurse wasted on scheduling instead of patient care.",
+  formula: {
+    who: "Freelance designers",
+    what: "spend 3+ hours per week manually creating invoices and chasing payments",
+    howOften: "weekly",
+    impact: "lost billable time and cash flow stress",
+    workaround: "use spreadsheet templates",
+    whyInadequate: "don't track who's paid or send reminders"
+  },
+  tryitPrompts: [
+    "Think of a frustration you experienced this week at work, school, or in your daily routine.",
+    "What process or system have you used recently that felt harder than it should be?",
+    "What do people around you complain about regularly?"
+  ]
+};
+
 // Lesson content for interactive modules
 const LESSON_CONTENT = {
   "problems-vs-complaints": {
@@ -434,10 +525,10 @@ const LESSON_CONTENT = {
       {
         type: "concept",
         title: "Complaint vs. Problem",
-        html: `
-          <p><strong>Complaint:</strong> "This scheduling system is terrible."</p>
-          <p><strong>Problem:</strong> "Nurses spend 20 minutes per shift navigating a scheduling system
-          that could be simplified — that's 120+ hours per year per nurse wasted on scheduling instead of patient care."</p>
+        dynamic: true,
+        buildHtml: (ex) => `
+          <p><strong>Complaint:</strong> "${ex.complaint}"</p>
+          <p><strong>Problem:</strong> "${ex.problem}"</p>
           <p>The difference? A problem is <em>specific</em>, <em>measurable</em>, and points toward a <em>solution</em>.</p>
         `
       },
@@ -451,14 +542,16 @@ const LESSON_CONTENT = {
       {
         type: "concept",
         title: "The Problem Statement Formula",
-        html: `
+        dynamic: true,
+        buildHtml: (ex) => `
           <p>A strong problem statement follows this pattern:</p>
           <blockquote><strong>[WHO]</strong> experiences <strong>[WHAT PROBLEM]</strong> <strong>[HOW OFTEN]</strong>,
           which causes <strong>[WHAT IMPACT]</strong>. Currently they <strong>[CURRENT WORKAROUND]</strong>,
           which <strong>[WHY THAT'S INADEQUATE]</strong>.</blockquote>
-          <p><em>Example:</em> <strong>Freelance designers</strong> spend <strong>3+ hours per week</strong> manually
-          creating invoices and chasing payments, which causes <strong>lost billable time and cash flow stress</strong>.
-          Currently they <strong>use spreadsheet templates</strong>, which <strong>don't track who's paid or send reminders</strong>.</p>
+          <p><em>Example:</em> <strong>${ex.formula.who}</strong> ${ex.formula.what} <strong>${ex.formula.howOften}</strong>,
+          which causes <strong>${ex.formula.impact}</strong>.
+          Currently they <strong>${ex.formula.workaround}</strong>,
+          which <strong>${ex.formula.whyInadequate}</strong>.</p>
           <p>Notice how every piece is specific and measurable. That's what makes it actionable.</p>
         `
       },
@@ -485,6 +578,8 @@ const LESSON_CONTENT = {
       {
         type: "rate-problem",
         title: "Try it: Rate a Problem",
+        dynamicPrompt: true,
+        buildPrompt: (ex) => ex.tryitPrompts[0] + " First, describe it using the problem statement formula above (who, what, how often, what impact, current workaround, why it's inadequate). Then evaluate it on the dimensions below.",
         prompt: "Think of a frustration you experienced this week. First, describe it using the problem statement formula above (who, what, how often, what impact, current workaround, why it's inadequate). Then evaluate it on the dimensions below.",
         dimensions: [
           { id: "people", label: "People Impacted", desc: "How many people experience this problem?", inputType: "number" },
