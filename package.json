@@ -1,0 +1,16 @@
+{
+  "name": "wgu-problem-solving-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive prototype for WGU Problem-Solving with AI course",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
