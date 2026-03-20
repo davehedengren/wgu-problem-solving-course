@@ -462,10 +462,14 @@ const LESSON_CONTENT = {
         `
       },
       {
-        type: "tryit",
+        type: "rate-problem",
         title: "Try it: Rate a Problem",
-        prompt: "Think of a frustration you experienced this week. Describe it as a problem (not a complaint), then rate it on Impact, Frequency, and Solvability (1-5 each).",
-        placeholder: "Example: Students in my program can't easily find study groups for specific courses. Impact: 4, Frequency: 5, Solvability: 4. Score: 80."
+        prompt: "Think of a frustration you experienced this week. Describe it as a problem (not a complaint), then evaluate it on the dimensions below.",
+        dimensions: [
+          { id: "people", label: "People Impacted", desc: "How many people experience this problem?", inputType: "number" },
+          { id: "severity", label: "Severity", desc: "How painful is this when it happens?", anchors: ["Minor annoyance", "Frustrating", "Wastes real time", "Causes real harm", "Critical blocker"] },
+          { id: "solvability", label: "Solvability", desc: "How plausible is it that you could build a solution?", anchors: ["Very hard", "Challenging", "Doable with help", "Quite doable", "Straightforward"] }
+        ]
       },
       {
         type: "quiz",

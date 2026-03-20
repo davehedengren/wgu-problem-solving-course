@@ -530,6 +530,203 @@ body {
     font-size: 0.9rem;
 }
 
+/* Rate-a-Problem structured evaluation */
+.rate-problem-box {
+    background: #0f2918;
+    border: 1px solid #22c55e44;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+}
+.rate-problem-box h3 {
+    color: #4ade80;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+.rate-problem-box > p { color: #a7f3d0; margin-bottom: 0.75rem; }
+.rate-problem-box textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #0a1f12;
+    border: 1px solid #22c55e44;
+    border-radius: 8px;
+    color: #e1e4e8;
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 1rem;
+}
+.rate-problem-box textarea:focus { border-color: #22c55e; }
+
+.rate-dimensions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.rate-dimension {
+    background: #0a1f12;
+    border: 1px solid #22c55e33;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+.rate-dimension-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+.rate-dimension-header label {
+    color: #4ade80;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.rate-value {
+    background: #22c55e;
+    color: #0f2918;
+    font-weight: 700;
+    font-size: 0.85rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rate-desc {
+    color: #8b8fa3;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.rate-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.rate-anchor {
+    color: #6b7280;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    min-width: 70px;
+}
+.rate-anchor:last-child { text-align: right; }
+.rate-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #1a3a25;
+    border-radius: 3px;
+    outline: none;
+}
+.rate-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #22c55e;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.rate-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #22c55e;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.rate-number-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.rate-number-input {
+    width: 100px;
+    background: #0a1f12;
+    border: 1px solid #22c55e44;
+    border-radius: 8px;
+    color: #e1e4e8;
+    padding: 0.5rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    -moz-appearance: textfield;
+}
+.rate-number-input:focus { border-color: #22c55e; }
+.rate-number-input::-webkit-outer-spin-button,
+.rate-number-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.rate-number-label {
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.rate-score-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #0a1f12;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.rate-score-label {
+    color: #a7f3d0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.rate-score-value {
+    color: #22c55e;
+    font-weight: 700;
+    font-size: 1.5rem;
+    min-width: 2.5rem;
+}
+.rate-score-hint {
+    color: #8b8fa3;
+    font-size: 0.85rem;
+    flex: 1;
+}
+
+.rate-get-feedback-btn {
+    background: #22c55e;
+    color: #0f2918;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+.rate-get-feedback-btn:hover { background: #16a34a; }
+
+.rate-feedback { min-height: 0; }
+.rate-feedback-loading {
+    color: #4ade80;
+    font-style: italic;
+    padding: 0.75rem;
+}
+.rate-feedback-content {
+    background: #0a1f12;
+    border: 1px solid #22c55e44;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #e1e4e8;
+    line-height: 1.6;
+}
+.rate-feedback-content strong { color: #4ade80; }
+.rate-feedback-error {
+    color: #f87171;
+    padding: 0.75rem;
+}
+
 .quiz-section {
     background: #1a1d2e;
     border: 1px solid #2a2d3a;

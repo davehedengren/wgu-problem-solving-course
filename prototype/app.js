@@ -286,6 +286,9 @@ function renderLesson(lesson) {
           </div>
         `;
         break;
+      case 'rate-problem':
+        html += renderRateProblem(section);
+        break;
       case 'quiz':
         html += renderQuiz(section.questions);
         break;
@@ -309,6 +312,130 @@ function renderQuiz(questions) {
 
   html += '</div>';
   return html;
+}
+
+function renderRateProblem(section) {
+  const dimHtml = section.dimensions.map(d => {
+    if (d.inputType === 'number') {
+      return `
+        <div class="rate-dimension">
+          <div class="rate-dimension-header">
+            <label>${d.label}</label>
+          </div>
+          <p class="rate-desc">${d.desc}</p>
+          <div class="rate-number-row">
+            <input type="number" min="1" value="1" class="rate-number-input" id="rate-${d.id}"
+              oninput="updateProblemScore()" placeholder="e.g. 50">
+            <span class="rate-number-label">people</span>
+          </div>
+        </div>
+      `;
+    }
+    return `
+      <div class="rate-dimension">
+        <div class="rate-dimension-header">
+          <label>${d.label}</label>
+          <span class="rate-value" id="rate-val-${d.id}">3</span>
+        </div>
+        <p class="rate-desc">${d.desc}</p>
+        <div class="rate-slider-row">
+          <span class="rate-anchor">${d.anchors[0]}</span>
+          <input type="range" min="1" max="5" value="3" class="rate-slider" id="rate-${d.id}"
+            oninput="document.getElementById('rate-val-${d.id}').textContent=this.value; updateProblemScore()">
+          <span class="rate-anchor">${d.anchors[4]}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="rate-problem-box">
+      <h3>${section.title}</h3>
+      <p>${section.prompt}</p>
+      <textarea id="rate-problem-desc" placeholder="Describe the problem here — be specific about who it affects and what happens..."></textarea>
+      <div class="rate-dimensions">
+        ${dimHtml}
+      </div>
+      <div class="rate-score-row">
+        <div class="rate-score-label">Problem Score:</div>
+        <div class="rate-score-value" id="rate-score">9</div>
+        <div class="rate-score-hint" id="rate-score-hint">Might be too small — look for a bigger problem</div>
+      </div>
+      <button class="rate-get-feedback-btn" onclick="getProblemFeedback()">Get AI Feedback on My Evaluation</button>
+      <div class="rate-feedback" id="rate-feedback"></div>
+    </div>
+  `;
+}
+
+function updateProblemScore() {
+  const people = Math.max(1, parseInt(document.getElementById('rate-people')?.value || 1));
+  const severity = parseInt(document.getElementById('rate-severity')?.value || 3);
+  const solvability = parseInt(document.getElementById('rate-solvability')?.value || 3);
+  const score = people * severity * solvability;
+
+  const scoreEl = document.getElementById('rate-score');
+  const hintEl = document.getElementById('rate-score-hint');
+  if (scoreEl) scoreEl.textContent = score.toLocaleString();
+
+  if (hintEl) {
+    if (score >= 100) hintEl.textContent = 'Strong candidate for a project!';
+    else if (score >= 30) hintEl.textContent = 'Decent candidate — keep refining';
+    else hintEl.textContent = 'Might be too small — look for a bigger problem';
+  }
+}
+
+async function getProblemFeedback() {
+  const desc = document.getElementById('rate-problem-desc')?.value?.trim();
+  if (!desc) {
+    alert('Please describe the problem first.');
+    return;
+  }
+
+  const people = document.getElementById('rate-people')?.value || 1;
+  const severity = document.getElementById('rate-severity')?.value || 3;
+  const solvability = document.getElementById('rate-solvability')?.value || 3;
+
+  const feedbackEl = document.getElementById('rate-feedback');
+  feedbackEl.innerHTML = '<div class="rate-feedback-loading">Getting AI feedback...</div>';
+
+  const prompt = `A student described this problem and self-evaluated it. Give them brief, constructive feedback (3-4 paragraphs max).
+
+Problem description: "${desc}"
+
+Student's self-ratings:
+- People Impacted: ${people} people
+- Severity: ${severity}/5
+- Solvability: ${solvability}/5
+- Combined Score: ${people * severity * solvability}
+
+For each dimension, tell them whether you agree with their rating or if you think they're over- or under-estimating, and why. Then give one concrete suggestion for how they could sharpen the problem statement. Be encouraging but honest.`;
+
+  try {
+    const res = await fetch('/api/wizard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [{ role: 'user', content: prompt }],
+        studentProfile: {},
+        scaffoldingLevel: 5,
+        moduleId: 1
+      })
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    feedbackEl.innerHTML = '<div class="rate-feedback-content">' +
+      data.response
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>')
+        .replace(/^/, '<p>')
+        .replace(/$/, '</p>') +
+      '</div>';
+  } catch (err) {
+    feedbackEl.innerHTML = '<div class="rate-feedback-error">Could not get AI feedback. Make sure the server is running.</div>';
+    console.error('Feedback error:', err);
+  }
 }
 
 function checkAnswer(el, questionIndex, optionIndex, correctIndex, correctFeedback, incorrectFeedback) {
